@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,6 +38,16 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ReqUser::class, mappedBy="UserReq")
+     */
+    private $reqUsers;
+
+    public function __construct()
+    {
+        $this->reqUsers = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +73,11 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
+    }
+
+
+    public function __toString(){
+        return $this->email;
     }
 
     /**
@@ -112,5 +129,65 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Request[]
+     */
+    public function getRequests(): Collection
+    {
+        return $this->requests;
+    }
+
+    public function addRequest(Request $request): self
+    {
+        if (!$this->requests->contains($request)) {
+            $this->requests[] = $request;
+            $request->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRequest(Request $request): self
+    {
+        if ($this->requests->removeElement($request)) {
+            // set the owning side to null (unless already changed)
+            if ($request->getUser() === $this) {
+                $request->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ReqUser[]
+     */
+    public function getReqUsers(): Collection
+    {
+        return $this->reqUsers;
+    }
+
+    public function addReqUser(ReqUser $reqUser): self
+    {
+        if (!$this->reqUsers->contains($reqUser)) {
+            $this->reqUsers[] = $reqUser;
+            $reqUser->setUserReq($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReqUser(ReqUser $reqUser): self
+    {
+        if ($this->reqUsers->removeElement($reqUser)) {
+            // set the owning side to null (unless already changed)
+            if ($reqUser->getUserReq() === $this) {
+                $reqUser->setUserReq(null);
+            }
+        }
+
+        return $this;
     }
 }
