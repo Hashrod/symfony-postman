@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61936a0c-7123-4d40-b197-e3e4bfbf3f7b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fake_postman/src/Controller/RequestIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/fake_postman/src/Controller/RequestIndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fake_postman/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/fake_postman/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fake_postman/templates/request_index/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/fake_postman/templates/request_index/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,13 +160,34 @@
       <updated>1605187462764</updated>
       <workItem from="1605187463894" duration="1837000" />
     </task>
+    <task id="LOCAL-00001" summary="3/4 du projet fait">
+      <created>1605442939338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605442939339</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="3/4 du projet fait" />
+    <option name="LAST_COMMIT_MESSAGE" value="3/4 du projet fait" />
   </component>
   <component name="WindowStateProjectService">
     <state x="586" y="203" key="#Inspections" timestamp="1605427737816">
@@ -188,6 +206,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="541" y="248" key="NewPhpClassDialog/-1920.0.1920.1050/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605435136853" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1605442942800">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/-1920.0.1920.1050/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605442942800" />
     <state x="667" y="258" width="639" height="534" key="find.popup" timestamp="1605431687843">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

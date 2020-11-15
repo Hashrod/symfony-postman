@@ -50,9 +50,10 @@ class RequestIndexController extends AbstractController
         $form = $this->createForm(ReqUserType::class, $req);
         $form->handleRequest($request);
         $client = HttpClient::create();
-        $user = $this->security->getUser();
-        $u =
-        $requs = $user->getRequest;
+        $user = $this->security->getUser()->getId();
+        $requs = $this->repository->findBy(['UserReq' => $user]);
+
+        dump($requs);
 
         if ($form->isSubmitted() && $form->isValid()){
             $meth = $form->get('Method')->getData();
@@ -62,21 +63,52 @@ class RequestIndexController extends AbstractController
 
             if ($meth == 0){
                 $methode = "GET";
+                $response = $client->request($methode, $url, [
+                    'headers' => [
+                        'token' => $token,
+                    ],
+                ]);
+                $content = $response->getContent();
+                var_dump($content);
             } elseif ($meth == 1) {
                 $methode = "POST";
+                $response = $client->request($methode, $url, [
+                    'headers' => [
+                        'token' => $token,
+                    ],
+                    'body' => [
+                        $body
+                    ]
+                ]);
+                $content = $response->getContent();
+                var_dump($content);
             } elseif ($meth == 2) {
                 $methode = "UPDATE";
+                $response = $client->request($methode, $url, [
+                    'headers' => [
+                        'token' => $token,
+                    ],
+                    'body' => [
+                        $body
+                    ]
+                ]);
+                $content = $response->getContent();
+                var_dump($content);
             } elseif ($meth == 3) {
                 $methode = "DELETE";
+                $response = $client->request($methode, $url, [
+                    'headers' => [
+                        'token' => $token,
+                    ],
+                    'body' => [
+                        $body
+                    ]
+                ]);
+                $content = $response->getContent();
+                var_dump($content);
             }
 
-            $response = $client->request($methode, $url, [
-                'headers' => [
-                    'token' => $token,
-                ],
-            ]);
-            $content = $response->getContent();
-            var_dump($content);
+
 
             $data = new ReqUser();
             $data->setMethod($meth)
@@ -94,7 +126,7 @@ class RequestIndexController extends AbstractController
             'request' => $req,
             'form' => $form->createView(),
             'controller_name' => 'RequestIndexController',
-            'requs' => $requs,
+            'requs' => $requs
         ]);
     }
 }
