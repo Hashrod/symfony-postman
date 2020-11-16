@@ -3,12 +3,63 @@
 {% block title %}Hello RequestIndexController!{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-    <button>Envoyer</button>
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Nouvelle requête</h1>
+            <a href={{ path('app_logout') }}>
+                Se déconnecter
+            </a>
+        </div>
+    </div>
+    <div class="row flex">
+        <div style="margin-left:auto; margin-right: auto">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            </br>
+            <button class="btn btn-lg btn-primary" type="submit">
+                Envoyer
+            </button>
 
-{{ form_end(form) }}
-{% for requ in requs %}
-    {{ requ.method }}
-{% endfor %}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Toutes vos requêtes</h1>
+        </div>
+    </div>
+
+    <div class="row flex">
+        {% for requ in requs %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% if requ.method == 0 %}
+                                <h1>GET</h1>
+                            {% endif %}
+                            {% if requ.method == 1 %}
+                                <h1>POST</h1>
+                            {% endif %}
+                            {% if requ.method == 2 %}
+                                <h1>UPDATE</h1>
+                            {% endif %}
+                            {% if requ.method == 3 %}
+                                <h1>DELETE</h1>
+                            {% endif %}
+
+                        </h5>
+                        <p class="card-text">URL : {{ requ.url }}</p>
+                        <p class="card-text">token : {{ requ.token }}</p>
+                        <p class="card-text">Réponse : {{ requ.reqresponse }}</p>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+    </div>
+
 {% endblock %}

@@ -50,7 +50,7 @@ class RequestIndexController extends AbstractController
         $form = $this->createForm(ReqUserType::class, $req);
         $form->handleRequest($request);
         $client = HttpClient::create();
-        $user = $this->security->getUser()->getId();
+        $user = $this->security->getUser();
         $requs = $this->repository->findBy(['UserReq' => $user]);
 
         dump($requs);
